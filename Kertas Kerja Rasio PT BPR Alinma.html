@@ -62,14 +62,15 @@ select{font:inherit;background:var(--sf);color:var(--tx);border:1px solid var(--
 /* ===== 1. DATA AWAL ===== */
 const TAB=[["rasio","Dashboard Rasio"],["data","Data Keuangan"],["atmr","ATMR"],["kpmm","KPMM (CAR)"],["nim","NIM"],["cash","Cash Ratio"],["uji","Uji Input Data"]];
 // Pos Data Keuangan yang diinput (kolom D sheet Data Keuangan). Subtotal tidak ada di sini karena dihitung.
-const LEAF=[["aset","Total Aset"],["kas","Kas"],["giro","Giro"],["abat","ABA Tabungan"],["abad","ABA Deposito"],["kmk","Kredit Modal Kerja"],["kk","Kredit Konsumtif"],["kp","Kredit Pensiun"],["pajak","Kewajiban Segera Pajak"],["titip","Titipan Nasabah"],["ubunga","Utang Bunga Belum Jatuh Tempo"],["inv","Inventaris"],["pinv","Penyusutan Inventaris"],["atb","Aset Tidak Berwujud"],["patb","Penyusutan Aset Tidak Berwujud"],["tab","Tabungan Umum"],["dep","Deposito Umum"],["abpt","ABP Tabungan"],["abpd","ABP Deposito"],["pinj","Pinjaman Diterima"],["mdis","Modal Disetor"],["msum","Modal Sumbangan"],["rugi","Rugi Tahun Lalu"],["laba","Rugi Laba Tahun Berjalan"],["pop","Pendapatan Operasional"],["bgiro","Bunga Giro"],["btab","Bunga Tabungan"],["bdep","Bunga Deposito"],["bkyd","Bunga KYD"],["xbl","Biaya Bunga Simpanan Bank Lain"],["xbt","Biaya Bunga Tabungan"],["xbd","Biaya Bunga Deposito"],["bop","Beban Operasional"]];
+const LEAF=[["aset","Total Aset"],["kas","Kas"],["giro","Giro"],["abat","ABA Tabungan"],["abad","ABA Deposito"],["kmk","Kredit Modal Kerja"],["kk","Kredit Konsumtif"],["kp","Kredit Pensiun"],["pajak","Kewajiban Segera Pajak"],["titip","Titipan Nasabah"],["ubunga","Utang Bunga Belum Jatuh Tempo"],["inv","Inventaris"],["pinv","Penyusutan Inventaris"],["atb","Aset Tidak Berwujud"],["patb","Penyusutan Aset Tidak Berwujud"],["tab","Tabungan Umum"],["dep","Deposito Umum"],["abpt","ABP Tabungan"],["abpd","ABP Deposito"],["pinj","Pinjaman Diterima"],["mdis","Modal Disetor"],["msum","Modal Sumbangan"],["rugi","Rugi Tahun Lalu"],["laba","Rugi Laba Tahun Berjalan"],["pop","Pendapatan Operasional"],["bgiro","Bunga Giro"],["btab","Bunga Tabungan"],["bdep","Bunga Deposito"],["bkyd","Bunga KYD"],["xbl","Biaya Bunga Simpanan Bank Lain"],["xbt","Biaya Bunga Tabungan"],["xbd","Biaya Bunga Deposito"],["xpinj","Biaya Bunga Pinjaman Diterima"],["bop","Beban Operasional"]];
 const LBL=Object.fromEntries(LEAF);
-const DEF={date:"2025-11-30",mode:"x",
+const DEF={date:"2026-10-31",mode:"x",   // data awal = Laporan APOLO Oktober 2026 (konsolidasi)
   bulan:10,            // jumlah bulan berjalan untuk penyetahunan (Excel memakai 10)
   apb:1315073594,      // Aset Produktif Bermasalah Netto (Ratio!R36)
   ppap:1,              // rasio PPAP (Ratio!C19:H19)
-  v:{aset:30228754963,kas:234719700,giro:1840506337,abat:202948967,abad:500000000,kmk:9369761211,kk:15931032982,kp:2725619696,pajak:11647071,titip:981729690,ubunga:4099334,inv:934992009,pinv:-745910321,atb:127600000,patb:-113002017,tab:8380820189,dep:10120218263,abpt:84225839,abpd:1000000000,pinj:34588099176,mdis:14000000000,msum:464820000,rugi:-8192726817,laba:-103090584,pop:5718696121,bgiro:11318991,btab:0,bdep:24291663,bkyd:4505252400,xbl:20124441,xbt:60648236,xbd:606424706,bop:5821786706},
+  v:{aset:33985243635,kas:126160700,giro:5277071947,abat:202948967,abad:500000000,kmk:9483795841,kk:16124921537,kp:2758791836,pajak:11647071,titip:1010483503,ubunga:4099334,inv:967522917,pinv:-839824164,atb:460600000,patb:-155825041,tab:6785792251,dep:13481500000,abpt:30059555,abpd:2000000000,pinj:4205998000,mdis:15000000000,msum:464820000,rugi:-8421183806,laba:-525969662,pop:6042554108,bgiro:13861992,btab:0,bdep:4416666,bkyd:3805118365,xbl:42097210,xbt:69846379,xbd:463709825,xpinj:149695778,bop:6506884698},
   npl:{nkb:.1027,nkn:.0807,npb:.1035,npn:.0682,ncb:.1013,ncn:.1009},
+  apm:{a1:32444318815,a2:31996603398,a3:31131175807,a4:30623373227,a5:32003231926,a6:32035754154,a7:31572717113,a8:33087845074,a9:32688183782,a10:34358791381}, // aset produktif per bulan Jan-Okt (NIM)
   atmr:{sbi:0,ksbi:0,ayda1:0,emas:0,kbank:0,kbumn:0,ht1:0,bumn50:0,tanah:0,kend:0,lain:0,macet:0,ayda0:0},   // pos ATMR yang diinput manual
   kp:{rev:0,ppap:0,mp:0,sub:0},                                                                              // modal pelengkap (KPMM)
   boy:{abl:622695912,kyd:17894165684,igiro:436981,itab:0,idep:1625000,ikyd:286317813,ilain:0,xbl:6921832,xbt:37835872,xbd:8736850,xpin:0,xlain:0}}; // saldo awal tahun (NIM!C)
@@ -78,9 +79,9 @@ const HIS={p:["Des 2024","Jan 2025","Feb 2025","Mei 2025","Jun 2025"],r:[["BOPO"
 /* ===== 2. PENYIMPANAN ===== */
 let S, tab="rasio", SIM=null;           // S = data utama, SIM = data area uji (tidak disimpan)
 const clone=x=>JSON.parse(JSON.stringify(x));
-const muat=()=>{try{const x=localStorage.getItem("alinma");if(x)return JSON.parse(x)}catch(e){}return null};
-const simpan=()=>{try{localStorage.setItem("alinma",JSON.stringify(S))}catch(e){}};
-S=Object.assign(clone(DEF),muat()||{});
+const muat=()=>{try{const x=localStorage.getItem("alinma-okt2026");if(x)return JSON.parse(x)}catch(e){}return null};
+const simpan=()=>{try{localStorage.setItem("alinma-okt2026",JSON.stringify(S))}catch(e){}};
+S=Object.assign(clone(DEF),muat()||{});S.v=Object.assign({},DEF.v,S.v);if(!S.v.xpinj)S.v.xpinj=DEF.v.xpinj;   // pos baru (mis. xpinj) tetap ada walau data lama tersimpan di peramban
 const $=s=>document.querySelector(s);
 
 /* ===== 3. FORMAT TAMPILAN ===== */
@@ -106,7 +107,7 @@ function hitungDataKeuangan(v){
     dpk:   v.tab+v.dep+v.abpt+v.abpd,          // Excel: D22 = SUM(D23:D26)  Dana Pihak Ketiga
     minti: v.mdis+v.msum+v.rugi+v.laba,        // Excel: D32 = SUM(D28:D31)  Modal Inti
     pbunga:v.bgiro+v.btab+v.bdep+v.bkyd,       // Excel: D34 = SUM(D35:D38)  Pendapatan Bunga
-    bbunga:v.xbl+v.xbt+v.xbd,                  // Excel: D39 = SUM(D40:D42)  Beban Bunga
+    bbunga:v.xbl+v.xbt+v.xbd+(+v.xpinj||0),    // Beban Bunga = Simpanan Bank Lain + Tabungan + Deposito + Pinjaman Diterima
     aba:   v.giro+v.abat+v.abad                // Excel: ATMR!E24 = Giro + ABA Tabungan + ABA Deposito
   };
 }
@@ -156,8 +157,9 @@ function hitungKPMM(v,dk,atmr,p){
 function hitungCash(v){
   const selisihTab=v.abat-v.abpt;                   // Excel: F9 = F10 - F11
   const likuid=v.kas+v.giro+selisihTab;             // Excel: F12 = F7 + F8 + F9
-  const lancar=v.tab+v.dep+v.abpd;                  // Excel: F19 = SUM(F16:F18)
-  return{selisihTab,likuid,lancar,rasio:likuid/lancar}; // Excel: F20 = F12 / F19
+  const segera=v.pajak+v.titip+v.ubunga;            // Kewajiban segera = Pajak + Titipan Nasabah + Utang Bunga Belum Jatuh Tempo
+  const lancar=segera+v.tab+v.dep;                  // Kewajiban lancar = Kewajiban Segera + Tabungan Umum + Deposito Umum
+  return{selisihTab,likuid,segera,lancar,rasio:likuid/lancar}; // Excel: F20 = F12 / F19
 }
 
 // 4e. Sheet "NIM": Bunga Bersih disetahunkan / Rata-rata aset produktif
@@ -166,29 +168,33 @@ function hitungNIM(st,dk){
   // [uraian, BoY, EoY, sumber EoY]
   const aktiva=[["Pada bank lain",b.abl,dk.aba,"Giro + ABA Tabungan + ABA Deposito"],["Kredit yang Diberikan (KYD)",b.kyd,dk.kyd,"Kredit Modal Kerja + Konsumtif + Pensiun"]];
   const pendapatan=[["Giro",b.igiro,v.bgiro,"Bunga Giro"],["Tabungan",b.itab,v.btab,"Bunga Tabungan"],["Deposito",b.idep,v.bdep,"Bunga Deposito"],["KYD",b.ikyd,v.bkyd,"Bunga KYD"],["Lainnya",b.ilain,0,"-"]];
-  const beban=[["Biaya bunga simpanan bank lain",b.xbl,v.xbl,"Data Keuangan"],["Biaya bunga tabungan",b.xbt,v.xbt,"Data Keuangan"],["Biaya bunga deposito",b.xbd,v.xbd,"Data Keuangan"],["Pinjaman yang diterima",b.xpin,0,"-"],["Lainnya",b.xlain,0,"-"]];
+  const beban=[["Biaya bunga simpanan bank lain",b.xbl,v.xbl,"Data Keuangan"],["Biaya bunga tabungan",b.xbt,v.xbt,"Data Keuangan"],["Biaya bunga deposito",b.xbd,v.xbd,"Data Keuangan"],["Biaya bunga pinjaman diterima",b.xpin,+v.xpinj||0,"Data Keuangan"],["Lainnya",b.xlain,0,"-"]];
   const aB=jumlah(aktiva,1),aE=jumlah(aktiva,2),iB=jumlah(pendapatan,1),iE=jumlah(pendapatan,2),xB=jumlah(beban,1),xE=jumlah(beban,2);
   const bungaBersih=iE-xE;                          // Excel: D23 = Pendapatan Bunga - Beban Bunga
   const setahun=bungaBersih/m*12;                   // Excel: D24 = (D23 / 10) x 12
   const rataAset=(aB+aE)/2;                         // rata-rata (BoY + EoY) / 2
-  const pembagi=k?rataAset:aE/m;                    // Excel: D25 = D8 / 10 (metode Terkoreksi memakai rata-rata)
-  return{aktiva,pendapatan,beban,aB,aE,iB,iE,xB,xE,bungaBersih,setahun,rataAset,pembagi,nim:setahun/pembagi}; // Excel: D26 = D24 / D25
+  const apm=st.apm||{};let jmlApm=0;for(let i=1;i<=m;i++)jmlApm+=(+apm["a"+i]||0);
+  const pembagi=k?rataAset:jmlApm/m;              // mode Excel: rata-rata = jumlah aset produktif bulanan / jumlah bulan                    // Excel: D25 = D8 / 10 (metode Terkoreksi memakai rata-rata)
+  return{aktiva,pendapatan,beban,aB,aE,iB,iE,xB,xE,bungaBersih,setahun,rataAset,pembagi,jmlApm,nim:k?setahun/pembagi:Math.floor(setahun/pembagi*1e4)/1e4}; // mode Excel: NIM = (Bunga bersih / bulan x 12) / (Aset produktif / bulan), dipotong (bukan dibulatkan) 2 desimal persen, sesuai hitungan manual 11,54%
+// // Excel: D26 = D24 / D25
 }
 
 // 4f. Sheet "Ratio": rasio akhir beserta rumus dan angka yang dipakai
 function hitungRasio(st,dk,at,kp,cs,nm){
   const v=st.v,m=st.bulan,k=st.mode==="k",R=[];
   const add=(id,nm_,nilai,rumus,angka)=>R.push({id,nama:nm_,nilai,rumus,angka});
-  const labaSetahun=v.laba/m*12;                    // Excel: Ratio!R23 = (Laba / 10) x 12
+  const labaSetahun=v.laba/m;                    // Excel: Ratio!R23 = (Laba / 10) x 12
   add("bopo","BOPO",v.bop/v.pop,"Beban Operasional ÷ Pendapatan Operasional",`${rp(v.bop)} ÷ ${rp(v.pop)}`);
-  add("ldr","LDR",dk.kyd/(v.tab+v.dep),"Kredit yang Diberikan ÷ (Tabungan Umum + Deposito Umum)",`${rp(dk.kyd)} ÷ (${rp(v.tab)} + ${rp(v.dep)})`);
+  // LDR: pembagi = Tabungan + Deposito + Pinjaman Diterima (tanpa ABP Tabungan dan ABP Deposito)
+  const dana=v.tab+v.dep+v.pinj;
+  add("ldr","LDR",dk.kyd/dana,"Kredit yang Diberikan ÷ (Tabungan Umum + Deposito Umum + Pinjaman Diterima)",`${rp(dk.kyd)} ÷ (${angka(v,["tab","dep","pinj"])})`);
   add("cash","Cash Ratio",cs.rasio,"Jumlah Alat Likuid ÷ Jumlah Kewajiban Lancar",`${rp(cs.likuid)} ÷ ${rp(cs.lancar)}`);
   const pa=k?v.aset:v.aset/m;                       // Excel: Ratio!R24 = Total Aset / 10
-  add("roa","ROA",labaSetahun/pa,k?"(Laba ÷ bulan × 12) ÷ Total Aset":"(Laba ÷ bulan × 12) ÷ (Total Aset ÷ bulan)",`(${rp(v.laba)} ÷ ${m} × 12) ÷ ${rp(pa)}`);
+  add("roa","ROA",labaSetahun/pa,k?"(Laba ÷ 10) ÷ Total Aset":"(Laba ÷ 10) ÷ (Total Aset ÷ bulan)",`(${rp(v.laba)} ÷ ${m}) ÷ ${rp(pa)}`);
   const pm=k?dk.minti:dk.minti/m;                   // Excel: Ratio!R26 = Modal Inti / 10
   add("roe","ROE",labaSetahun/pm,k?"(Laba ÷ bulan × 12) ÷ Modal Inti":"(Laba ÷ bulan × 12) ÷ (Modal Inti ÷ bulan)",`(${rp(v.laba)} ÷ ${m} × 12) ÷ ${rp(pm)}`);
   add("car","CAR (KPMM)",kp.car,"Jumlah Modal ÷ ATMR",`${rp(kp.modal)} ÷ ${rp(at.total)}`);
-  add("nim","NIM",nm.nim,k?"(Bunga Bersih ÷ bulan × 12) ÷ Rata-rata Aset Produktif (BoY+EoY)/2":"(Bunga Bersih ÷ bulan × 12) ÷ (Aset Produktif EoY ÷ bulan)",`(${rp(nm.bungaBersih)} ÷ ${m} × 12) ÷ ${rp(nm.pembagi)}`);
+  add("nim","NIM",nm.nim,k?"(Bunga Bersih ÷ bulan × 12) ÷ Rata-rata Aset Produktif (BoY+EoY)/2":"(Bunga Bersih ÷ bulan × 12) ÷ (Jumlah Aset Produktif ÷ bulan), dipotong 2 desimal",k?`(${rp(nm.bungaBersih)} ÷ ${m} × 12) ÷ ${rp(nm.pembagi)}`:`(${rp(nm.bungaBersih)} ÷ ${m} × 12) ÷ ${rp(nm.pembagi)}`);
   add("miapb","MIAPB",dk.minti/st.apb,"Modal Inti ÷ Aset Produktif Bermasalah Netto",`${rp(dk.minti)} ÷ ${rp(st.apb)}`);
   return R;
 }
@@ -231,7 +237,7 @@ const kt=(id,x)=>isFinite(x)?chip(kriteria(id,x)):"-";
 const VIEW={
 rasio(h){
   const urut=["bopo","ldr","cash","roa","roe","car","nim","miapb"].map(i=>h.r[i]);
-  let o=S.mode==="x"?`<div class="warn"><b>Perhatian:</b> metode Sesuai file Excel membagi rata-rata aset dan modal dengan jumlah bulan (${S.bulan}), sehingga NIM, ROA, dan ROE tampak tidak wajar (NIM ${pc(h.r.nim.nilai,0)}). Ubah ke Terkoreksi di kanan atas untuk membandingkan.</div>`:"";
+  let o=S.mode==="x"?`<div class="warn"><b>Perhatian:</b> metode Sesuai file Excel membagi rata-rata aset dan modal dengan jumlah bulan (${S.bulan}), sehingga ROA dan ROE tampak tidak wajar. Ubah ke Terkoreksi di kanan atas untuk membandingkan.</div>`:"";
   o+=`<div class="grid">${urut.map(r=>{const q=kriteria(r.id,r.nilai);return `<div class="k" style="--c:var(${WARNA[q]})"><b>${r.nama}</b><span class="v">${pc(r.nilai)}</span>${chip(q)}</div>`}).join("")}</div>`;
   const nl=[["NPL Bruto Konsolidasi","nkb"],["NPL Netto Konsolidasi","nkn"],["NPL Bruto Pusat","npb"],["NPL Netto Pusat","npn"],["NPL Bruto Cabang","ncb"],["NPL Netto Cabang","ncn"]];
   o+=`<p class="note">Kolom Rumus menunjukkan cara hitung, dan baris di bawahnya menunjukkan angka yang dipakai (hasil substitusi).</p>`;
@@ -255,7 +261,7 @@ data(h){
   [23,"Pinjaman Diterima","pinj"],[24,"Modal Disetor","mdis"],[25,"Modal Sumbangan","msum"],[26,"Rugi Tahun Lalu","rugi"],[27,"Rugi Laba Tahun Berjalan","laba"],
   [28,"Modal Inti Perseroan",d.minti,"t",["mdis","msum","rugi","laba"]],[29,"Pendapatan Operasional","pop"],
   [30,"Pendapatan Bunga",d.pbunga,"t",["bgiro","btab","bdep","bkyd"]],[31,"Bunga Giro","bgiro","s"],[32,"Bunga Tabungan","btab","s"],[33,"Bunga Deposito","bdep","s"],[34,"Bunga KYD","bkyd","s"],
-  [35,"Beban Bunga",d.bbunga,"t",["xbl","xbt","xbd"]],[36,"Biaya Bunga Simpanan Bank Lain","xbl","s"],[37,"Biaya Bunga Tabungan","xbt","s"],[38,"Biaya Bunga Deposito","xbd","s"],[39,"Beban Operasional","bop"]];
+  [35,"Beban Bunga",d.bbunga,"t",["xbl","xbt","xbd","xpinj"]],[36,"Biaya Bunga Simpanan Bank Lain","xbl","s"],[37,"Biaya Bunga Tabungan","xbt","s"],[38,"Biaya Bunga Deposito","xbd","s"],[39,"Biaya Bunga Pinjaman Diterima","xpinj","s"],[40,"Beban Operasional","bop"]];
   return `<p class="note">Sel berlatar kuning adalah input. Baris tebal dihitung otomatis dari rincian di bawahnya, dan kolom Rumus menunjukkan penjumlahannya. Semua angka dalam rupiah dan tersimpan di peramban ini.</p>`+
   card("Kondisi keuangan "+tl(S.date),baris.map(r=>{const t=r[3]==="t";
     return `<tr class="${r[3]||""}"><td class="m" style="width:40px">${r[0]}</td><td>${r[1]}</td><td class="n">${t?rp(r[2]):inp("v."+r[2])}</td>${t?`<td class="fx">${nama(r[4])}<br><span class="a">${angka(v,r[4])}</span></td>`:"<td></td>"}</tr>`}).join(""),["No","Keterangan","Jumlah","~Rumus"])+
@@ -292,9 +298,10 @@ nim(h){const n=h.nm,k=S.mode==="k";
   `<tr class="t"><td colspan="5">Pendapatan bunga</td></tr>`+B(n.pendapatan,["igiro","itab","idep","ikyd","ilain"])+tot("Jumlah pendapatan bunga",n.iB,n.iE)+
   `<tr class="t"><td colspan="5">Beban bunga</td></tr>`+B(n.beban,["xbl","xbt","xbd","xpin","xlain"])+tot("Jumlah beban bunga",n.xB,n.xE)+
   tr(["",rp(n.bungaBersih),"",F("Pendapatan bunga EoY - Beban bunga EoY",`${rp(n.iE)} - ${rp(n.xE)}`)],"Bunga bersih")+
-  tr(["",rp(n.setahun),"",F("Bunga bersih ÷ bulan × 12",`${rp(n.bungaBersih)} ÷ ${S.bulan} × 12`)],"Bunga bersih disetahunkan")+
-  tr(["",rp(n.pembagi),"",k?F("(Aset produktif BoY + EoY) ÷ 2",`(${rp(n.aB)} + ${rp(n.aE)}) ÷ 2`):F("Aset produktif EoY ÷ bulan (sesuai Excel)",`${rp(n.aE)} ÷ ${S.bulan}`)],"Rata-rata aset produktif")+
-  tr(["",pc(n.nim)+" "+kt("nim",n.nim),"",F("Bunga bersih disetahunkan ÷ Rata-rata aset produktif",`${rp(n.setahun)} ÷ ${rp(n.pembagi)}`)],"Net Interest Margin (NIM)","t"),["Keterangan","BoY (input)","EoY","Rata-rata","~Sumber / rumus"])},
+  (k?tr(["",rp(n.setahun),"",F("Bunga bersih ÷ bulan × 12",`${rp(n.bungaBersih)} ÷ ${S.bulan} × 12`)],"Bunga bersih disetahunkan"):"")+
+  tr(["",rp(n.pembagi),"",k?F("(Aset produktif BoY + EoY) ÷ 2",`(${rp(n.aB)} + ${rp(n.aE)}) ÷ 2`):F("Jumlah aset produktif Jan–Okt ÷ bulan (lihat tabel di bawah)",`${rp(n.jmlApm)} ÷ ${S.bulan}`)],"Rata-rata aset produktif")+
+    tr(["",pc(n.nim)+" "+kt("nim",n.nim),"",k?F("Bunga bersih disetahunkan ÷ Rata-rata aset produktif",`${rp(n.setahun)} ÷ ${rp(n.pembagi)}`):F("Bunga bersih disetahunkan ÷ Rata-rata aset produktif (dipotong 2 desimal)",`${rp(n.setahun)} ÷ ${rp(n.pembagi)}`)],"Net Interest Margin (NIM)","t"),["Keterangan","BoY (input)","EoY","Rata-rata","~Sumber / rumus"])+
+  (!k?card("Aset produktif per bulan (rata-rata NIM)",["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt"].map((b,i)=>tr([inp("apm.a"+(i+1))],b)).join("")+tr([rp(n.jmlApm)],"Jumlah","t")+tr([rp(n.pembagi),F("Jumlah ÷ bulan",`${rp(n.jmlApm)} ÷ ${S.bulan}`)],"Rata-rata aset produktif","t"),["Bulan","Aset produktif (input)","~Rumus"]):"")},
 
 cash(h){const v=S.v,c=h.cs;
   return card("Perhitungan Cash Ratio (konsolidasi)",
@@ -302,8 +309,10 @@ cash(h){const v=S.v,c=h.cs;
   tr([rp(c.selisihTab),F("a - b",`${rp(v.abat)} - ${rp(v.abpt)}`)],"3. Selisih lebih tabungan antar bank")+
   tr([rp(v.abat),F("Data Keuangan: ABA Tabungan")],"a. Tabungan pada bank lain","s")+tr([rp(v.abpt),F("Data Keuangan: ABP Tabungan")],"b. Tabungan bank lain pada bank","s")+
   tr([rp(c.likuid),F("Kas + Giro + Selisih tabungan",`${rp(v.kas)} + ${rp(v.giro)} + ${rp(c.selisihTab)}`)],"Jumlah alat likuid","t")+
-  tr([rp(v.tab),F("Data Keuangan: Tabungan Umum")],"a. Tabungan")+tr([rp(v.dep),F("Data Keuangan: Deposito Umum")],"b. Deposito")+tr([rp(v.abpd),F("Data Keuangan: ABP Deposito")],"c. Simpanan dari bank lain")+
-  tr([rp(c.lancar),F("Tabungan + Deposito + Simpanan bank lain",angka(v,["tab","dep","abpd"]))],"Jumlah kewajiban lancar","t")+
+  tr([rp(c.segera),F("Pajak + Titipan nasabah + Utang bunga",angka(v,["pajak","titip","ubunga"]))],"a. Kewajiban segera")+
+  tr([rp(v.pajak),F("Data Keuangan: Kewajiban Segera Pajak")],"- Kewajiban segera pajak","s")+tr([rp(v.titip),F("Data Keuangan: Titipan Nasabah")],"- Titipan nasabah","s")+tr([rp(v.ubunga),F("Data Keuangan: Utang Bunga Belum Jatuh Tempo")],"- Utang bunga belum jatuh tempo","s")+
+  tr([rp(v.tab),F("Data Keuangan: Tabungan Umum")],"b. Tabungan umum")+tr([rp(v.dep),F("Data Keuangan: Deposito Umum")],"c. Deposito umum")+
+  tr([rp(c.lancar),F("Kewajiban segera + Tabungan + Deposito",`${rp(c.segera)} + ${rp(v.tab)} + ${rp(v.dep)}`)],"Jumlah kewajiban lancar","t")+
   tr([pc(c.rasio)+" "+kt("cash",c.rasio),F("Jumlah alat likuid ÷ Jumlah kewajiban lancar",`${rp(c.likuid)} ÷ ${rp(c.lancar)}`)],"Cash Ratio","t"),["Keterangan","Jumlah","~Rumus dan angka yang dipakai"])},
 
 uji(h){
